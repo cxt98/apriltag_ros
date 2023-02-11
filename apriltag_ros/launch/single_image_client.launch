@@ -2,8 +2,8 @@
 
   <arg name="launch_prefix" default="" /> <!--set to value="gdbserver localhost:10000" for remote debugging-->
   <arg name="node_namespace" default="apriltag_ros_single_image_client_node" />
-  <arg name="image_load_path" /> <!-- Where to load image for analysis from -->
-  <arg name="image_save_path" /> <!-- Where to save tag detections image -->
+  <arg name="image_load_path" default="/home/cxt/Documents/others/ford/packing_box_perception/test_images_2cam/cam_2/frame0000.jpg"/> <!-- Where to load image for analysis from -->
+  <arg name="image_save_path" default="/home/cxt/Documents/others/ford/packing_box_perception/test_images_2cam/cam_2/apriltag_detection.png"/> <!-- Where to save tag detections image -->
 
   <!-- Set parameters -->
   <rosparam command="load" file="$(find apriltag_ros)/config/settings.yaml" ns="$(arg node_namespace)" />
@@ -15,10 +15,10 @@
     <param name="image_save_path" type="str" value="$(arg image_save_path)" />
 
     <!-- Camera intrinsic parameters -->
-    <param name="fx" type="double" value="652.7934615847107" />
-    <param name="fy" type="double" value="653.9480389077635" />
-    <param name="cx" type="double" value="307.1288710375904" />
-    <param name="cy" type="double" value="258.7823279214385" />
+    <param name="fx" type="double" value="599.95458984375" />
+    <param name="fy" type="double" value="600.1411743164062" />
+    <param name="cx" type="double" value="329.26763916015625" />
+    <param name="cy" type="double" value="242.07289123535156" />
 
   </node>
 

@@ -21,6 +21,11 @@
 #   ]
 standalone_tags:
   [
+    {id: 6, size: 0.0925, name: Digit},
+    {id: 2, size: 0.0925, name: Ground Marker 1},
+    {id: 4, size: 0.0925, name: Ground Marker 2},
+    {id: 5, size: 0.0925, name: Ground Marker 3},
+    {id: 7, size: 0.0925, name: Ground Marker 4}
   ]
 # ## Tag bundle definitions
 # ### Remarks
