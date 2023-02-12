@@ -155,3 +155,8 @@ install(TARGETS
 )
 
 install(PROGRAMS scripts/analyze_image DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+catkin_install_python(PROGRAMS
+  scripts/calib_g2o.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
