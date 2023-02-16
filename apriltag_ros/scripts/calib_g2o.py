@@ -117,6 +117,23 @@ class PoseCalibrator:
                 for t in self.cam_tag.detections:
                     if t.id[0] == self.tag_id_robot:
                         rospy.loginfo('Assigned AprilTag %d to cam2robot Pose and started to publish', self.tag_id_robot)
+                        # apply a rotation tranform to tag to align to robot world frame with z upward, x forward: x:=z, y:=-x, z:=-y
+                        rotmat = R.from_quat([
+                            t.pose.pose.pose.orientation.x,
+                            t.pose.pose.pose.orientation.y,
+                            t.pose.pose.pose.orientation.z,
+                            t.pose.pose.pose.orientation.w
+                        ]).as_matrix()
+                        rotmat = rotmat @ np.array([
+                            [0, -1,  0],
+                            [0,  0, -1],
+                            [1,  0,  0],
+                        ])
+                        quat = R.from_matrix(rotmat).as_quat()
+                        t.pose.pose.pose.orientation.x = quat[0]
+                        t.pose.pose.pose.orientation.y = quat[1]
+                        t.pose.pose.pose.orientation.z = quat[2]
+                        t.pose.pose.pose.orientation.w = quat[3]
                         self.cam2robot_pose = t.pose
 
     def cam2cam_calib_callback(self, msg): # currently work for 2 cameras only
